@@ -1,0 +1,181 @@
+/*讓盒子本身就包括 margin+padding+內容本身 (格式大小就不會亂跑)*/
+* {
+  box-sizing: border-box;
+}
+
+/*劃出大概架構*/
+#nav {
+  background-color: #ff6600;
+  width: 100%;
+  position: fixed; /*以視窗的左上角做為原點，而且不會隨著捲軸移動。*/
+  top: 0;
+  left: 0;
+   z-index: 100; /*我們希望 #nav 永遠顯示在最上方，要高於其他的元素，因此我們要幫他定義一個大於 0 的數字*/
+}
+
+
+/*修改li內的樣式*/
+.menu li {
+  width: 150px;
+  padding: 10px 0px;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  list-style-type: none;  /*取消清單前的黑點*/
+  text-align: center;
+  background-color: #ff6600;
+  color: #fff;
+  display: inline-block;  /*inline-block 會讓排列方向改成水平*/
+}
+
+/*hover是一種pseudo-classes (偽類別) 用意是滑鼠經過時讓畫面有所動作*/
+a {
+  display: block;
+  color: #fff;
+  text-decoration: none;  /*取消連結下的底線*/
+}
+li:hover  {
+  border: 1px solid #ff6600;
+  background-color: #fff;
+}
+li:hover a {
+  color: #ff6600;
+  font-weight: 800;
+}
+
+/* about me 讓內容向左流動,Float 屬性讓原本應該一次佔滿一行的 block 元素變得可以緊靠在一起*/
+#my-avatar {
+  float: left;
+  margin-right: 20px;
+}
+#my-avatar img {
+  width: 200px;
+}
+
+/*修改表格內容格式*/
+h1 {
+  margin-bottom: 0;
+}
+h3 {
+  margin: 0;
+}
+table {
+  font-size: 14px;
+  text-align: left;
+}
+th, td {
+  vertical-align: top;   /*讓 td 和 th 的內容靠上對齊*/
+}
+td {
+  color: #666;
+  padding-left: 10px;
+}
+hr {
+  border: 0.5px solid #eee;
+}
+
+/* my work 修改item的相對位置*/
+.item {
+  position: relative; /* 從原始 static 的位置為原點，進行相對位移*/
+  display: inline-block;
+}
+
+.item-info {
+  background-color: rgba(255,255,255,.8);   /* 背景半透明 */
+
+  position: absolute; /*從上層某個已啟用 position 座標的原點來起算，如果找不到祖先，就以 body做為原點*/
+  top: 0;
+  left: 0;
+}
+
+/*修改item在視窗中的占比為30%、並修改item-inof格式*/
+.item {
+  max-width: 30%;
+}
+.item img{
+  width: 100%;
+}
+.item-info{
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding: 25px 10px;
+  display: inline-block;
+  margin-bottom: 10px;
+  display: none; /* 也可以用 opacity: 0; item-info 設為透明* 使用opacity的設定做顯示切換，使用者就會點不到,因為你的info不管如何都會擋在圖片上面。*/
+}
+.item:hover .item-info {
+  display: block; /* 也可以用 opacity: 1;滑鼠游移時則顯示出來 line:110*/
+}
+
+/*修改contact內的樣式, margin: 0 auto;則是讓內容置中*/
+
+form.contact-form {
+  width: 50%;
+  margin: 0 auto;
+}
+/*<textarea> 預設是使用者可以拖曳元素的右下角來改變大小，但我們使用 resize:none 把這個功能關掉，並將輸入框的高度設為 4 行字。*/
+.form-row input, .form-row textarea {
+  border-radius: 3px;
+  width: 100%;
+  border: 1px solid #D6D9DC;
+  padding: 7px;
+}
+.form-row textarea {
+  resize: none;
+  height: 4em;
+}
+
+/*修改 button*/
+.form-row button {
+  border: none;
+  border-radius: 3px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+.form-row button[type="submit"] {
+  background-color: #5995DA;
+  color: #FFFFFF;
+}
+.form-row button:hover {
+  background-color: #76AEED;
+}
+.form-row button:active {
+  background-color: #407FC7;
+}
+/*由於現在使用者可能會用各式各樣的螢幕尺寸來觀看網頁，我們不希望網頁的排版遇到崩潰的狀況，因此我們會加一層容器，讓網頁內容保持在固定的範圍裡，
+這就是 .container 這層容器的作用。*/
+.container {
+  width: 800px;
+  margin: 0 auto;
+}
+/*知道 #nav 高度為 74px 以後，請為 #content 的樣式加上*/
+#content {
+  position: relative;
+  top: 74px;
+  padding: 15px;
+}
+#content > .container > div {
+  padding: 74px 0;
+}
+
+/*水平線的樣式*/
+hr.bar {
+  border: 2px solid #ff6600;
+  width: 80px;
+}
+/*#my-work 圖片置中*/
+#my-work-gallery {
+    text-align: center;
+}
+/*讓 .menu 的按鈕靠右*/
+.menu {
+  float: right;
+}
+/*讓 h1 元素置left*/
+h1 {
+  text-align: center;
+}
+#about h1 {
+  margin-bottom: 0;
+  text-align: left;
+}
