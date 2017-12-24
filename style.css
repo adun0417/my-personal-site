@@ -179,3 +179,76 @@ h1 {
   margin-bottom: 0;
   text-align: left;
 }
+
+/*-----------------------------RWD----------------------------*/
+/*最小寬度大於1024px時,則...*/
+@media screen and (min-width: 1024px) {
+  .menu-button,
+  .menu-button-checkbox{
+    display: none;
+  }
+}
+
+/*最大寬度小於 1023px時 ,則...*/
+@media screen and (max-width: 1023px) {
+    .container {
+    width: auto;
+  }
+    .menu-button {
+    float: right;
+    font-size: 25px;
+    line-height: 40px;
+    color: white;
+    background: transparent; /*隱藏背景色*/
+    padding: 0 15px;
+    border: 0;               /*消除區塊周邊*/
+  }
+
+/*設定checkbox*/
+  .menu-button-checkbox {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 55px;
+      height: 40px;
+      opacity: 0;          /*隱藏checkbox*/
+    }
+
+    .menu-button-checkbox:checked ~ .menu {  /*當 .menu-button-checkbox 狀態為 checked 時，選擇在同階層後面的 .menu 元素*/
+      display: block;
+    }
+
+  /*把 ul.menu 排到右半邊去，並美化*/
+  .menu {
+     display: none;
+     margin-top: 0;
+     padding-left: 0;
+     position: fixed;
+     right: 0;
+     top: 40px;
+     width: 150px;
+     height: 100%;
+     background: rgba(0%,10%,20%,0.3);;
+   }
+   .menu li {
+     border: 0;
+     border-radius: 0;
+   }
+
+  /*於手機模式調整照片格式*/
+   #my-avatar {
+     width: 100%;
+   }
+   #my-avatar img {
+     display: block;
+     margin: 15px auto;
+   }
+   /*其他調整*/
+   .item {
+     max-width: 100%;
+   }
+   form.contact-form {
+   width: 80%;
+ }
+
+}
